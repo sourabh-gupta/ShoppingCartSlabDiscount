@@ -3,4 +3,5 @@
 /.classpath
 /.project
 /bin/
+/.factory*
 .DS_Store

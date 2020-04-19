@@ -4,21 +4,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@AllArgsConstructor
 public class SlabBasedOffer implements Offer {
     private Map<Customer, List<Slab>> customerBasedSlabs;
-
-    public Map<Customer, List<Slab>> getCustomerBasedSlabs() {
-		return customerBasedSlabs;
-	}
-
-	public void setCustomerBasedSlabs(Map<Customer, List<Slab>> customerBasedSlabs) {
-		this.customerBasedSlabs = customerBasedSlabs;
-	}
-
-	public SlabBasedOffer(Map<Customer, List<Slab>> customerBasedSlabs) {
-		super();
-		this.customerBasedSlabs = customerBasedSlabs;
-	}
 
 	@Override
     public double discountOffered(CheckoutRequest request) {
@@ -49,53 +40,13 @@ public class SlabBasedOffer implements Offer {
         return discount;
     }
 
+	@AllArgsConstructor
+    @Data
     public static class Slab implements Comparable<Slab> {
        
-
-
-		public long getStart() {
-			return start;
-		}
-
-
-		public void setStart(long start) {
-			this.start = start;
-		}
-
-
-		public long getEnd() {
-			return end;
-		}
-
-
-		public void setEnd(long end) {
-			this.end = end;
-		}
-
-
-		public float getDiscount() {
-			return discount;
-		}
-
-
-		public void setDiscount(float discount) {
-			this.discount = discount;
-		}
-
-
 		private long start;
         private long end;
         private float discount;
-
-        
-
-        public Slab(long start, long end, float discount) {
-			super();
-			this.start = start;
-			this.end = end;
-			this.discount = discount;
-		}
-
 
 		@Override
         public int compareTo(Slab o) {
